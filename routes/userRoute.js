@@ -9,12 +9,6 @@ router.post("/register", async (req, res) => {
   try {
     const user = new User(req.body);
 
-    // const user = new User({
-    //   fullname: req.body.fullname,
-    //   email: req.body.email,
-    //   password: req.body.password,
-    // });
-
     const newUser = await user.save();
     res.status(201).json(newUser);
   } catch (error) {
@@ -29,7 +23,7 @@ router.post("/login", async (req, res) => {
     // - récupérer le user avec son email
     // - vérifier si l'utilisateur existe
     // - vérifier la validité du mdp
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ email: req.body.username });
 
     if (!user) {
       return res.status(400).json("Cet utilisateur n'existe pas");

@@ -81,11 +81,10 @@ router.put("/:id", auth, async (req, res) => {
       return res.status(401).json("Cette note ne vous appartient pas");
     }
 
-    note.nom = req.body.nom;
-    note.prix = req.body.prix;
+    note.titre = req.body.titre;
     note.description = req.body.description;
-    note.photo = req.body.photo;
-    note.qteDispo = req.body.qteDispo;
+    note.tag = req.body.tag;
+    note.couleur = req.body.couleur;
 
     await note.save();
     res.json(note);
