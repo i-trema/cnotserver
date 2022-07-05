@@ -1,0 +1,81 @@
+### inscription d'un user a
+POST http://localhost:5000/user/register
+Content-Type: application/json
+
+{
+  "fullname": "ian1",
+  "email": "test1@email.fr",
+  "password": "123"
+}
+
+### inscription d'un user b
+POST http://localhost:5000/user/register
+Content-Type: application/json
+
+{
+  "fullname": "ian2",
+  "email": "test2@email.fr",
+  "password": "123"
+}
+
+### connexion d'un user a
+POST http://localhost:5000/user/login
+Content-Type: application/json
+
+{
+  "email": "test1@email.fr",
+  "password": "123"
+}
+
+### connexion d'un user b
+POST http://localhost:5000/user/login
+Content-Type: application/json
+
+{
+  "email": "test2@email.fr",
+  "password": "123"
+}
+
+### création d'une annonce
+POST http://localhost:5000/note
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTA5OGMyNmZhOTU4MzVhZjM0YjFkMCIsImlhdCI6MTY1NDY5NTEwNn0.RQr_2yo05VweyDd-WO_LECyEvBWaGKDbdGpiPhvaicA
+
+{
+  "titre": "pantalon ian2",
+  "description": "pantalon",
+  "couleur": 3
+  
+  
+}
+
+### lister les annonces
+GET http://localhost:5000/note
+
+
+### lister les annonces du user connecté
+GET http://localhost:5000/note/getNoteUser
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTA5OGMyNmZhOTU4MzVhZjM0YjFkMCIsImlhdCI6MTY1NDY5NTEwNn0.RQr_2yo05VweyDd-WO_LECyEvBWaGKDbdGpiPhvaicA
+
+### récupérer une annonce avec son id
+GET http://localhost:5000/annonce/629f66ac50f5fb025ae34069
+
+### supprimer une annonce avec son id
+DELETE  http://localhost:5000/annonce/62a09d1ff0cec3c07de72c16
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTA5OGJlNmZhOTU4MzVhZjM0YjFjZSIsImlhdCI6MTY1NDY5Mjk4OX0.wo7gzn6JYowOF-KC4UtrimVACUKXk0HvgVidWmFU2o0
+
+
+### mettre a jour une annonce
+PUT  http://localhost:5000/annonce/62a05ee0a9b037a9f79cc242
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTA5OGJlNmZhOTU4MzVhZjM0YjFjZSIsImlhdCI6MTY1NDY5Mjk4OX0.wo7gzn6JYowOF-KC4UtrimVACUKXk0HvgVidWmFU2o0
+
+
+{
+  "nom": "pneu",
+  "prix": 17,
+  "description": "pneu de vélo",
+  "photo": "photo"  
+}
+
+###
