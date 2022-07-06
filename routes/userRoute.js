@@ -19,11 +19,11 @@ router.post("/register", async (req, res) => {
 // Connexion d'un user :
 router.post("/login", async (req, res) => {
   try {
-    // ( dans le body on va retrouver email et password )
-    // - récupérer le user avec son email
+    // ( dans le body on va retrouver username et password )
+    // - récupérer le user avec son username
     // - vérifier si l'utilisateur existe
     // - vérifier la validité du mdp
-    const user = await User.findOne({ email: req.body.username });
+    const user = await User.findOne({ username: req.body.username });
 
     if (!user) {
       return res.status(400).json("Cet utilisateur n'existe pas");

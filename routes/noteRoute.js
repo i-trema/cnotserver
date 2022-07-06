@@ -4,7 +4,7 @@ const Note = require("../models/Note");
 const auth = require("../middleware/auth");
 
 //// Création d'une note :
-router.post("/", auth, async (req, res) => {
+router.post("/note", auth, async (req, res) => {
   try {
     req.body.idUser = req.payload.id;
     const note = new Note(req.body);
