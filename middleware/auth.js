@@ -8,7 +8,7 @@ const auth = (req, res, next) => {
     // création du token ) :
     jwt.verify(token, process.env.PRIVATE_KEY, (err, payload) => {
       if (err) {
-        return res.status(401).json("Unauthorized");
+        return res.status(401).json("Non Autorisé");
       }
 
       req.payload = payload;

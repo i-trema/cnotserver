@@ -13,6 +13,7 @@ router.post("/register", async (req, res) => {
     res.status(201).json(newUser);
   } catch (error) {
     res.status(500).json(error.message);
+    return;
   }
 });
 
@@ -26,7 +27,8 @@ router.post("/login", async (req, res) => {
     const user = await User.findOne({ username: req.body.username });
 
     if (!user) {
-      return res.status(400).json("Cet utilisateur n'existe pas");
+      res.status(400).json("Cet utilisateur n'existe pas");
+      return;
     }
 
     const isMatch = await bcrypt.compare(req.body.password, user.password);
@@ -37,8 +39,11 @@ router.post("/login", async (req, res) => {
 
     const token = jwt.sign({ id: user._id }, process.env.PRIVATE_KEY);
     res.json(token);
+    console.log("Server \n token : " + token + "\n user._id : " + user._id);
   } catch (error) {
-    res.status(500).json(error.message);
+    console.log(error);
+    res.sendStatus(500);
+    return;
   }
 });
 
