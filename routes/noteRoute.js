@@ -82,11 +82,12 @@ router.put("/:id", auth, async (req, res) => {
     }
 
     note.titre = req.body.titre;
-    note.description = req.body.description;
+    note.contenu = req.body.contenu;
     note.tag = req.body.tag;
     note.couleur = req.body.couleur;
 
     await note.save();
+    console.log(note.tag);
     res.json(note);
   } catch (error) {
     res.status(500).json(error.message);
