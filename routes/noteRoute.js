@@ -40,12 +40,22 @@ router.get("/getNoteUser", auth, async (req, res) => {
 //// Récupérer les notes partagées avec le user connecté
 router.get("/getNoteUserShare", auth, async (req, res) => {
   try {
-    const notes = await Note.find({ idUserShare: req.payload.id });
-    console.log("connected user id " + req.payload.id);
-
+    console.log(req.payload.id);
+    console.log(req.payload);
+    // const notes = await Note.find({
+    //   shareUsers: {
+    //     shareIdUser: req.payload.id,
+    //     // shareUsername: "aaaaaa",
+    //   },
+    // });
+    const notes = await Note.find({
+      shareUsers: { $elemMatch: { shareIdUser: req.payload.id } },
+    });
     res.json(notes);
   } catch (error) {
     res.status(500).json(error.message);
+
+    return false;
   }
 });
 
@@ -89,7 +99,10 @@ router.put("/:id", auth, async (req, res) => {
     if (!note) {
       return res.status(404).json("Cette note n'existe pas");
     }
-    if (note.idUser != req.payload.id && note.idUserShare != req.payload.id) {
+    if (
+      note.idUser != req.payload.id &&
+      !note.idUserShare.includes(req.payload.id)
+    ) {
       return res.status(401).json("Cette note ne vous appartient pas");
     }
     await note.updateOne(req.body);

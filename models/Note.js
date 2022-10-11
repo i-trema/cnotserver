@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const { modelName } = require("./User");
+const User = require("./User");
 
 const noteSchema = new mongoose.Schema(
   {
@@ -26,9 +28,17 @@ const noteSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Categorie",
     },
-    idUserShare: {
-      type: [mongoose.Schema.Types.ObjectId],
-      ref: "User",
+    shareUsers: {
+      type: [Object],
+      shareIdUser: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "User",
+      },
+      shareUsername: {
+        type: String,
+      },
+      // ref: "User",
     },
   },
   {

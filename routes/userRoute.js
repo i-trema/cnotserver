@@ -47,4 +47,44 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// récupérer l'user à partir du username :
+router.get("/:username", async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.params.username });
+    if (!user) {
+      res.json("Cet utilisateur n'existe pas");
+      // res.json("Cet utilisateur n'existe pas");
+
+      return;
+    }
+    res.json(user);
+    console.log(user._id);
+    console.log(user.username);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
+// récupérer l'user à partir de son id :
+router.get("/idUser/:id", async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.params.id });
+    if (!user) {
+      res.json("Cet utilisateur n'existe pas");
+      // res.json("Cet utilisateur n'existe pas");
+
+      return;
+    }
+    res.json(user);
+
+    console.log(req.params.id);
+    console.log(user._id);
+    console.log(user.username);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
 module.exports = router;
