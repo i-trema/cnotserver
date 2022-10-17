@@ -22,12 +22,12 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-/// "trigger" pour crypter le mdp avant de sauvegarder sur la bdd :
+/// "trigger" pour chiffrer le mdp avant de sauvegarder sur la bdd :
 /// ( on ne peut pas utiliser une fonction fléchée )
 userSchema.pre("save", async function () {
-  // vérifier si le mdp est nouveau pour ne pas crypter un mdp deux fois :
+  // vérifier si le mdp est nouveau pour ne pas chiffrer un mdp deux fois :
   if (this.isModified("password")) {
-    // crypter le mdp :
+    // chiffrer le mdp :
     this.password = await bcrypt.hash(this.password, 10);
   }
 });

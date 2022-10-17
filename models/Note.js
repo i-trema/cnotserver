@@ -24,10 +24,6 @@ const noteSchema = new mongoose.Schema(
       required: true,
       ref: "User",
     },
-    idCategorie: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Categorie",
-    },
     shareUsers: {
       type: [Object],
       shareIdUser: {

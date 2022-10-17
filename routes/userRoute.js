@@ -72,7 +72,6 @@ router.get("/idUser/:id", async (req, res) => {
     const user = await User.findOne({ _id: req.params.id });
     if (!user) {
       res.json("Cet utilisateur n'existe pas");
-      // res.json("Cet utilisateur n'existe pas");
 
       return;
     }
