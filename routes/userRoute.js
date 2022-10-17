@@ -86,4 +86,13 @@ router.get("/idUser/:id", async (req, res) => {
   }
 });
 
+router.get("/api/test", async (req, res) => {
+  try {
+    res.json("Test OK");
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
 module.exports = router;
