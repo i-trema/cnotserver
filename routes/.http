@@ -13,9 +13,9 @@ POST http://localhost:5000/user/register
 Content-Type: application/json
 
 {
-  "username": "111111",
+  "username": "",
   
-  "password": "111111"
+  "password": "222222"
 }
 
 ### connexion d'un user a
