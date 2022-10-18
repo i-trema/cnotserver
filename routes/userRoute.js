@@ -7,6 +7,13 @@ const jwt = require("jsonwebtoken");
 //// Création d'un user :
 router.post("/register", async (req, res) => {
   try {
+    const searchUser = await User.findOne({ username: req.body.username });
+    if (searchUser) {
+      res
+        .status(403)
+        .json("L'utilisateur " + req.body.username + " existe déjà...");
+      return;
+    }
     const user = new User(req.body);
 
     const newUser = await user.save();
