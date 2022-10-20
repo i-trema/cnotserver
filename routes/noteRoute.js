@@ -83,7 +83,7 @@ router.delete("/:id", auth, async (req, res) => {
     }
     /// on ne peut pas mettre "!==" car ils n'ont pas le même type:
     if (note.idUser != req.payload.id) {
-      return res.status(401).json("Cette note ne vous appartient pas");
+      return res.status(401).json("Cette note ne vous appartient pas...");
     }
     await note.remove();
     res.status(200).json("note supprimée");
@@ -101,9 +101,14 @@ router.put("/:id", auth, async (req, res) => {
     }
     if (
       note.idUser != req.payload.id &&
-      !note.idUserShare.includes(req.payload.id)
+      note.shareUsers.filter((u) => u.shareIdUser == req.payload.id) == 0
     ) {
-      return res.status(401).json("Cette note ne vous appartient pas");
+      return res
+        .status(401)
+        .json(
+          "Vous n'êtes pas autorisé à modifier cette note, désolé... " +
+            note.shareUsers.join()
+        );
     }
     await note.updateOne(req.body);
 
