@@ -102,4 +102,46 @@ router.get("/api/test", async (req, res) => {
   }
 });
 
+router.get("/privacy", async (req, res) => {
+  try {
+    res.send(
+'C.No.T! Privacy Policy
+Posted: October 24, 2022
+ianis m
+
+Thanks for using C.No.T! Here we describe how we collect, use and handle your information when you use our application.
+
+What & Why
+We collect email, username and password that you enter in the "Signup" page (authentification/inscription) to create a user account and find your Notes.
+We collect these informations and your Notes to store it in a private online database.
+
+With whom
+Your user account and your Notes are stored in a MongoDB database. 
+Password is crypted in the database so we can't know it.
+
+Retention. We'll retain information you store on our Services for as long as we need it to provide you the Services. 
+If you delete your account, we'll also delete this information. 
+But please note: (1) there might be some latency in deleting this information from our servers and back-up storage; 
+and (2) we may retain this information if necessary to comply with our legal obligations, resolve disputes, or enforce our agreements.
+
+Where
+Around the world. 
+To provide you with the Services, we may store, process and transmit information in locations around the world - including those outside your country. 
+Information may also be stored locally on the devices you use to access the Services.
+
+Changes
+If we are involved in a reorganization, merger, acquisition or sale of our assets, your information may be transferred as part of that deal. 
+We will notify you (for example, via a message to the email address associated with your account) of any such deal and outline your choices in that event.
+
+We may revise this Privacy Policy from time to time, and will post the most current version on our website. If a revision meaningfully reduces your rights, we will notify you.
+
+Contact
+Have questions or concerns about "C.No.T!" ? Contact us at imtest94dev _at_ gmail _dot_ com .'
+);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
 module.exports = router;
