@@ -39,7 +39,7 @@ Content-Type: application/json
 ### création d'une note
 POST http://localhost:5000/note/note
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGJmNjk4NDZjMjM3Mzk4MGM3ZmNmYyIsImlhdCI6MTY1ODg2NjI1N30.h5m7n3BxXi7XwOOz8eVbJUZSvTE-aYnaA5DJJcrOV3Y
+Authorization: Bearer 
 
 {
     "titre": "newnote",
@@ -64,11 +64,11 @@ GET http://localhost:5000/note
 
 ### lister les annonces du user connecté
 GET http://localhost:5000/note/getNoteUser
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGJhNzRmMzVkNmFiMjMxNzIxZjc2ZCIsImlhdCI6MTY2NTQxMzkxMn0.inDhVeRDZfyDSY92I0qNl5-sEh2w6ZoBAO80P6thJi4
+Authorization: 
 
 ### lister les annonces partagées avec le user connecté
 GET http://localhost:5000/note/getNoteUserShare
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGJhNzRmMzVkNmFiMjMxNzIxZjc2ZCIsImlhdCI6MTY2NTQxMzkxMn0.inDhVeRDZfyDSY92I0qNl5-sEh2w6ZoBAO80P6thJi4
+Authorization: Bearer 
 
 
 ### récupérer une annonce avec son id
@@ -76,13 +76,13 @@ GET http://localhost:5000/note/62c3280c137c35eb9ee79e69
 
 ### supprimer une annonce avec son id
 DELETE  http://localhost:5000/note/62c3280c137c35eb9ee79e69
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTA5OGJlNmZhOTU4MzVhZjM0YjFjZSIsImlhdCI6MTY1NDY5Mjk4OX0.wo7gzn6JYowOF-KC4UtrimVACUKXk0HvgVidWmFU2o0
+Authorization: Bearer 
 
 
 ### mettre a jour une annonce
 PUT  http://localhost:5000/note/632ead9bbcc96a7d84cf9f41
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGJhNzRmMzVkNmFiMjMxNzIxZjc2ZCIsImlhdCI6MTY2MTYzODE4OH0.QKJqhTheTU5pOmIUSOYFA8Bj-vF8aVoMrZevWofitxo
+Authorization: Bearer 
 
 {
     "idUserShare": ["2YGGDUDG"],
